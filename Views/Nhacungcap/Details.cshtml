@@ -1,0 +1,42 @@
+@model Nhom13.Models.Nhacungcap
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Nhacungcap</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TenNCC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TenNCC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SdtNCC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SdtNCC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DiachiNCC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DiachiNCC)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailNCC)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmailNCC)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.MaNCC">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,65 @@
+@model IEnumerable<Nhom13.Models.Nhanvien>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách Nhân viên</h1>
+
+<p>
+    <a asp-action="Create">Thêm Nhân viên</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.MaNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgaysinhNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SdtNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiachiNV)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailNV)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaysinhNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SdtNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiNV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailNV)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaNV">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.MaNV">Thông Tin</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaNV">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

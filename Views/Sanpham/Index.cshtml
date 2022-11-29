@@ -1,0 +1,47 @@
+@model IEnumerable<Nhom13.Models.Sanpham>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách Sản phẩm</h1>
+
+<p>
+    <a asp-action="Create">Thêm Sản phẩm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaSP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaSP)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.MaSP">Sửa</a> |
+                <a asp-action="Details" asp-route-id="@item.MaSP">Thông Tin</a> |
+                <a asp-action="Delete" asp-route-id="@item.MaSP">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
