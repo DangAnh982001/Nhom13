@@ -6,100 +6,90 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nhom13.Models;
-using Nhom13.Models.Process;
 
 namespace Nhom13.Controllers
 {
-    public class NhacungcapController : Controller
+    public class KhachhangController : Controller
     {
         private readonly ApplicationDbcontext _context;
 
-    private StringProcess strPro = new StringProcess();
-        public NhacungcapController(ApplicationDbcontext context)
+        public KhachhangController(ApplicationDbcontext context)
         {
             _context = context;
         }
 
-        // GET: Nhacungcap
+        // GET: Khachhang
         public async Task<IActionResult> Index()
         {
-              return _context.Nhacungcap != null ? 
-                          View(await _context.Nhacungcap.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbcontext.Nhacungcap'  is null.");
+              return _context.Khachhang != null ? 
+                          View(await _context.Khachhang.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbcontext.Khachhang'  is null.");
         }
 
-        // GET: Nhacungcap/Details/5
+        // GET: Khachhang/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.Nhacungcap == null)
+            if (id == null || _context.Khachhang == null)
             {
                 return NotFound();
             }
 
-            var nhacungcap = await _context.Nhacungcap
-                .FirstOrDefaultAsync(m => m.MaNCC == id);
-            if (nhacungcap == null)
+            var khachhang = await _context.Khachhang
+                .FirstOrDefaultAsync(m => m.MaKH == id);
+            if (khachhang == null)
             {
                 return NotFound();
             }
 
-            return View(nhacungcap);
+            return View(khachhang);
         }
 
-        // GET: Nhacungcap/Create
+        // GET: Khachhang/Create
         public IActionResult Create()
         {
-            var IDdautien = "NCC01";
-            var countAnh = _context.Nhacungcap.Count();
-            if (countAnh > 0)
-            {
-                var MaNCC = _context.Nhacungcap.OrderByDescending(m => m.MaNCC).First().MaNCC;
-                IDdautien = strPro.AutoGenerateCode(MaNCC);
-            }
-            ViewBag.newID = IDdautien;
             return View();
         }
 
-        // POST: Nhacungcap/Create
+        // POST: Khachhang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaNCC,TenNCC,SdtNCC,DiachiNCC,EmailNCC")] Nhacungcap nhacungcap)
+        public async Task<IActionResult> Create([Bind("MaKH,TenKH,NgaysinhKH,DiachiNV")] Khachhang khachhang)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(nhacungcap);
+                _context.Add(khachhang);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(nhacungcap);
+            return View(khachhang);
         }
 
-        // GET: Nhacungcap/Edit/5
+        // GET: Khachhang/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.Nhacungcap == null)
+            if (id == null || _context.Khachhang == null)
             {
                 return NotFound();
             }
 
-            var nhacungcap = await _context.Nhacungcap.FindAsync(id);
-            if (nhacungcap == null)
+            var khachhang = await _context.Khachhang.FindAsync(id);
+            if (khachhang == null)
             {
                 return NotFound();
             }
-            return View(nhacungcap);
+            return View(khachhang);
         }
 
-        // POST: Nhacungcap/Edit/5
+        // POST: Khachhang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("MaNCC,TenNCC,SdtNCC,DiachiNCC,EmailNCC")] Nhacungcap nhacungcap)
+        public async Task<IActionResult> Edit(string id, [Bind("MaKH,TenKH,NgaysinhKH,DiachiNV")] Khachhang khachhang)
         {
-            if (id != nhacungcap.MaNCC)
+            if (id != khachhang.MaKH)
             {
                 return NotFound();
             }
@@ -108,12 +98,12 @@ namespace Nhom13.Controllers
             {
                 try
                 {
-                    _context.Update(nhacungcap);
+                    _context.Update(khachhang);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!NhacungcapExists(nhacungcap.MaNCC))
+                    if (!KhachhangExists(khachhang.MaKH))
                     {
                         return NotFound();
                     }
@@ -124,49 +114,49 @@ namespace Nhom13.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(nhacungcap);
+            return View(khachhang);
         }
 
-        // GET: Nhacungcap/Delete/5
+        // GET: Khachhang/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.Nhacungcap == null)
+            if (id == null || _context.Khachhang == null)
             {
                 return NotFound();
             }
 
-            var nhacungcap = await _context.Nhacungcap
-                .FirstOrDefaultAsync(m => m.MaNCC == id);
-            if (nhacungcap == null)
+            var khachhang = await _context.Khachhang
+                .FirstOrDefaultAsync(m => m.MaKH == id);
+            if (khachhang == null)
             {
                 return NotFound();
             }
 
-            return View(nhacungcap);
+            return View(khachhang);
         }
 
-        // POST: Nhacungcap/Delete/5
+        // POST: Khachhang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.Nhacungcap == null)
+            if (_context.Khachhang == null)
             {
-                return Problem("Entity set 'ApplicationDbcontext.Nhacungcap'  is null.");
+                return Problem("Entity set 'ApplicationDbcontext.Khachhang'  is null.");
             }
-            var nhacungcap = await _context.Nhacungcap.FindAsync(id);
-            if (nhacungcap != null)
+            var khachhang = await _context.Khachhang.FindAsync(id);
+            if (khachhang != null)
             {
-                _context.Nhacungcap.Remove(nhacungcap);
+                _context.Khachhang.Remove(khachhang);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool NhacungcapExists(string id)
+        private bool KhachhangExists(string id)
         {
-          return (_context.Nhacungcap?.Any(e => e.MaNCC == id)).GetValueOrDefault();
+          return (_context.Khachhang?.Any(e => e.MaKH == id)).GetValueOrDefault();
         }
     }
 }

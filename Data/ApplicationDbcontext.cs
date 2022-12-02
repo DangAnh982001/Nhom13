@@ -19,4 +19,8 @@ using Nhom13.Models;
         public DbSet<Nhom13.Models.Nhanvien> Nhanvien { get; set; } = default!;
 
         public DbSet<Nhom13.Models.Nhaphang> Nhaphang { get; set; } = default!;
+
+        public DbSet<Nhom13.Models.Khachhang> Khachhang { get; set; } = default!;
+
+        public DbSet<Nhom13.Models.Hoadon> Hoadon { get; set; } = default!;
     }
