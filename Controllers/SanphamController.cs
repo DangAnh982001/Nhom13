@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nhom13.Models;
+using Nhom13.Models.Process;
 
 namespace Nhom13.Controllers
 {
     public class SanphamController : Controller
     {
         private readonly ApplicationDbcontext _context;
+        private StringProcess strPro = new StringProcess();
 
         public SanphamController(ApplicationDbcontext context)
         {
@@ -47,6 +49,14 @@ namespace Nhom13.Controllers
         // GET: Sanpham/Create
         public IActionResult Create()
         {
+            var IDdautien = "SP01";
+            var countAnh = _context.Sanpham.Count();
+            if (countAnh > 0)
+            {
+                var MaSP = _context.Sanpham.OrderByDescending(m => m.MaSP).First().MaSP;
+                IDdautien = strPro.AutoGenerateCode(MaSP);
+            }
+            ViewBag.newID = IDdautien;
             return View();
         }
 

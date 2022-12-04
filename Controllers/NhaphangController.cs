@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nhom13.Models;
+using Nhom13.Models.Process;
 
 namespace Nhom13.Controllers
 {
     public class NhaphangController : Controller
     {
         private readonly ApplicationDbcontext _context;
+        private StringProcess strPro = new StringProcess();
 
         public NhaphangController(ApplicationDbcontext context)
         {
@@ -52,6 +54,15 @@ namespace Nhom13.Controllers
             ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "TenNCC");
             ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "TenNV");
             ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP");
+
+            var IDdautien = "IDNH01";
+            var countAnh = _context.Nhaphang.Count();
+            if (countAnh > 0)
+            {
+                var IDNH = _context.Nhaphang.OrderByDescending(m => m.IDNH).First().IDNH;
+                IDdautien = strPro.AutoGenerateCode(IDNH);
+            }
+            ViewBag.newID = IDdautien;
             return View();
         }
 

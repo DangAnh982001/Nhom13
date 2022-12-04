@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nhom13.Models;
+using Nhom13.Models.Process;
 
 namespace Nhom13.Controllers
 {
     public class KhachhangController : Controller
     {
         private readonly ApplicationDbcontext _context;
+        private StringProcess strPro = new StringProcess();
 
         public KhachhangController(ApplicationDbcontext context)
         {
@@ -47,6 +49,14 @@ namespace Nhom13.Controllers
         // GET: Khachhang/Create
         public IActionResult Create()
         {
+            var IDdautien = "KH01";
+            var countAnh = _context.Khachhang.Count();
+            if (countAnh > 0)
+            {
+                var MaKH = _context.Khachhang.OrderByDescending(m => m.MaKH).First().MaKH;
+                IDdautien = strPro.AutoGenerateCode(MaKH);
+            }
+            ViewBag.newID = IDdautien;
             return View();
         }
 
