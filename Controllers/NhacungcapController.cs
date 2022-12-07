@@ -23,11 +23,23 @@ namespace Nhom13.Controllers
         }
 
         // GET: Nhacungcap
-        public async Task<IActionResult> Index()
+        // public async Task<IActionResult> Index()
+        // {
+        //       return _context.Nhacungcap != null ? 
+        //                   View(await _context.Nhacungcap.ToListAsync()) :
+        //                   Problem("Entity set 'ApplicationDbcontext.Nhacungcap'  is null.");
+        // }
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Nhacungcap != null ? 
-                          View(await _context.Nhacungcap.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbcontext.Nhacungcap'  is null.");
+            var Nhacungcap = from m in _context.Nhacungcap
+                select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Nhacungcap = Nhacungcap.Where(s => s.TenNCC!.Contains(searchString));
+                }
+
+            return View(await Nhacungcap.ToListAsync());
         }
 
         // GET: Nhacungcap/Details/5

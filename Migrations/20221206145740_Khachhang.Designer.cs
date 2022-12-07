@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Nhom13.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    [Migration("20221202025523_Khachhang")]
+    [Migration("20221206145740_Khachhang")]
     partial class Khachhang
     {
         /// <inheritdoc />
@@ -19,12 +19,38 @@ namespace Nhom13.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
 
+            modelBuilder.Entity("Nhom13.Models.Hoadon", b =>
+                {
+                    b.Property<string>("MaHD")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Ngayban")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SoluongHD")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("TenKH")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TenSP")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaHD");
+
+                    b.HasIndex("TenKH");
+
+                    b.HasIndex("TenSP");
+
+                    b.ToTable("Hoadon");
+                });
+
             modelBuilder.Entity("Nhom13.Models.Khachhang", b =>
                 {
                     b.Property<string>("MaKH")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DiachiNV")
+                    b.Property<string>("DiachiKH")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("NgaysinhKH")
@@ -130,6 +156,21 @@ namespace Nhom13.Migrations
                     b.HasKey("MaSP");
 
                     b.ToTable("Sanpham");
+                });
+
+            modelBuilder.Entity("Nhom13.Models.Hoadon", b =>
+                {
+                    b.HasOne("Nhom13.Models.Khachhang", "Khachhang")
+                        .WithMany()
+                        .HasForeignKey("TenKH");
+
+                    b.HasOne("Nhom13.Models.Sanpham", "Sanpham")
+                        .WithMany()
+                        .HasForeignKey("TenSP");
+
+                    b.Navigation("Khachhang");
+
+                    b.Navigation("Sanpham");
                 });
 
             modelBuilder.Entity("Nhom13.Models.Nhaphang", b =>

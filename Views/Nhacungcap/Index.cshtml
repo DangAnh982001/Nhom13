@@ -3,8 +3,9 @@
 @{
     ViewData["Title"] = "Index";
 }
+<h1 class="iphonh1"><marquee> Hệ Thống Quản Lí Bán Iphone 📱📱📱</marquee> </h1>
 
-<h1>Danh sách Nhà cung cấp</h1>
+<h2>Danh sách Nhà cung cấp</h2>
 
 <p>
     <a asp-action="Create">Thêm Nhà cung cấp</a>
@@ -12,6 +13,12 @@
 <p>
     <a asp-action="Upload">Upload</a>
 </p>
+<form asp-controller="Nhacungcap" asp-action="Index">
+    <p>
+        Tiêu đề: <input type="text" name="SearchString" />
+        <input type="submit" value="Lọc" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>

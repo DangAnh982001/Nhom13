@@ -17,6 +17,8 @@ public class Nhanvien {
     public string? SdtNV { get; set;}
     [Display( Name = "Địa chỉ")]
     public string? DiachiNV { get; set;}
+    
+    [EmailAddress(ErrorMessage = "Email.?")]
     [Display( Name = "Email")]
     public string? EmailNV { get; set;}
 

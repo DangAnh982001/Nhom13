@@ -3,12 +3,18 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Danh sách Sản phẩm</h1>
+<h1 class="iphonh1"><marquee> Hệ Thống Quản Lí Bán Iphone 📱📱📱</marquee> </h1>
+<h2>Danh sách Sản phẩm</h2>
 
 <p>
     <a asp-action="Create">Thêm Sản phẩm mới</a>
 </p>
+<form asp-controller="SanPham" asp-action="Index">
+    <p>
+        Tiêu đề: <input type="text" name="SearchString" />
+        <input type="submit" value="Lọc" />
+    </p>
+</form>
 <table class="table">
     <thead>
         <tr>

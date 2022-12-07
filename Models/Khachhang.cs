@@ -14,5 +14,5 @@ public class Khachhang {
      [DataType(DataType.Date)]
     public DateTime NgaysinhKH {get; set;}
     [Display( Name = "Địa chỉ")]
-    public string? DiachiNV { get; set;}
+    public string? DiachiKH { get; set;}
 }

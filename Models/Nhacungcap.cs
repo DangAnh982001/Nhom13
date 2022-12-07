@@ -10,6 +10,8 @@ public class Nhacungcap {
     public string? SdtNCC { get; set; }
     [Display(Name = "Địa chỉ")]
     public string? DiachiNCC { get; set; }
+    
     [Display(Name = "Email")]
+    [EmailAddress(ErrorMessage = "Email.?")]
     public string? EmailNCC { get; set; }
 }

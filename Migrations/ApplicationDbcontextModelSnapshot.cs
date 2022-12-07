@@ -47,7 +47,7 @@ namespace Nhom13.Migrations
                     b.Property<string>("MaKH")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DiachiNV")
+                    b.Property<string>("DiachiKH")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("NgaysinhKH")

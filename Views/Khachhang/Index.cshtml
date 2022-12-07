@@ -3,16 +3,16 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Danh sách Khách hàng</h1>
+<h1 class="iphonh1"><marquee> Hệ Thống Quản Lí Bán Iphone 📱📱📱</marquee> </h1>
+<h2>Danh sách Khách hàng</h2>
 
 <p>
-    <a asp-action="Create"> Thêm Khách hàng</a>
+    <a asp-action="Create">Thêm Khách hàng mới</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-             <th>
+            <th>
                 @Html.DisplayNameFor(model => model.MaKH)
             </th>
             <th>
@@ -22,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.NgaysinhKH)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DiachiNV)
+                @Html.DisplayNameFor(model => model.DiachiKH)
             </th>
             <th></th>
         </tr>
@@ -40,12 +40,12 @@
                 @Html.DisplayFor(modelItem => item.NgaysinhKH)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DiachiNV)
+                @Html.DisplayFor(modelItem => item.DiachiKH)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.MaKH">Sửa</a> |
                 <a asp-action="Details" asp-route-id="@item.MaKH">Thông Tin</a> |
-                <a asp-action="Delete" asp-route-id="@item.MaKH">Xoá</a>
+                <a asp-action="Delete" asp-route-id="@item.MaKH">Xóa</a>
             </td>
         </tr>
 }

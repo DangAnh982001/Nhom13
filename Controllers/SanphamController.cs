@@ -21,11 +21,22 @@ namespace Nhom13.Controllers
         }
 
         // GET: Sanpham
-        public async Task<IActionResult> Index()
+        // public async Task<IActionResult> Index()
+        // {
+        //       return _context.Sanpham != null ? 
+        //                   View(await _context.Sanpham.ToListAsync()) :
+        //                   Problem("Entity set 'ApplicationDbcontext.Sanpham'  is null.");
+        // }
+        public async Task<IActionResult> Index(string searchString)
         {
-              return _context.Sanpham != null ? 
-                          View(await _context.Sanpham.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbcontext.Sanpham'  is null.");
+            var Sanpham = from m in _context.Sanpham
+                select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Sanpham = Sanpham.Where(s => s.TenSP!.Contains(searchString));
+                }
+            return View(await Sanpham.ToListAsync());
         }
 
         // GET: Sanpham/Details/5
