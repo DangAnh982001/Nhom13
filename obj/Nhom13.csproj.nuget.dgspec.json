@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\QuaMonPTPM\\Nhom13\\Nhom13.csproj": {}
+    "C:\\Users\\ST\\Documents\\Nhom13\\Nhom13.csproj": {}
   },
   "projects": {
-    "D:\\QuaMonPTPM\\Nhom13\\Nhom13.csproj": {
+    "C:\\Users\\ST\\Documents\\Nhom13\\Nhom13.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\QuaMonPTPM\\Nhom13\\Nhom13.csproj",
+        "projectUniqueName": "C:\\Users\\ST\\Documents\\Nhom13\\Nhom13.csproj",
         "projectName": "Nhom13",
-        "projectPath": "D:\\QuaMonPTPM\\Nhom13\\Nhom13.csproj",
-        "packagesPath": "C:\\Users\\danga\\.nuget\\packages\\",
-        "outputPath": "D:\\QuaMonPTPM\\Nhom13\\obj\\",
+        "projectPath": "C:\\Users\\ST\\Documents\\Nhom13\\Nhom13.csproj",
+        "packagesPath": "C:\\Users\\ST\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ST\\Documents\\Nhom13\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\danga\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\ST\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -46,11 +46,11 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SQLite": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
