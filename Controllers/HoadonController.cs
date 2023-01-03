@@ -6,14 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nhom13.Models;
-using Nhom13.Models.Process;
 
 namespace Nhom13.Controllers
 {
     public class HoadonController : Controller
     {
         private readonly ApplicationDbcontext _context;
-        private StringProcess strPro = new StringProcess();
 
         public HoadonController(ApplicationDbcontext context)
         {
@@ -50,17 +48,8 @@ namespace Nhom13.Controllers
         // GET: Hoadon/Create
         public IActionResult Create()
         {
-            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "TenKH");
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP");
-
-            var IDdautien = "HD01";
-            var countAnh = _context.Hoadon.Count();
-            if (countAnh > 0)
-            {
-                var MaHD = _context.Hoadon.OrderByDescending(m => m.MaHD).First().MaHD;
-                IDdautien = strPro.AutoGenerateCode(MaHD);
-            }
-            ViewBag.newID = IDdautien;
+            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "MaKH");
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP");
             return View();
         }
 
@@ -69,17 +58,16 @@ namespace Nhom13.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MaHD,TenKH,TenSP,SoluongHD")] Hoadon hoadon)
+        public async Task<IActionResult> Create([Bind("MaHD,TenKH,TenSP,SoluongHD,Ngayban")] Hoadon hoadon)
         {
             if (ModelState.IsValid)
             {
-                hoadon.Ngayban = DateTime.Now;
                 _context.Add(hoadon);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "TenKH", hoadon.TenKH);
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP", hoadon.TenSP);
+            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "MaKH", hoadon.TenKH);
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP", hoadon.TenSP);
             return View(hoadon);
         }
 
@@ -96,8 +84,8 @@ namespace Nhom13.Controllers
             {
                 return NotFound();
             }
-            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "TenKH", hoadon.TenKH);
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP", hoadon.TenSP);
+            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "MaKH", hoadon.TenKH);
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP", hoadon.TenSP);
             return View(hoadon);
         }
 
@@ -133,8 +121,8 @@ namespace Nhom13.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "TenKH", hoadon.TenKH);
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP", hoadon.TenSP);
+            ViewData["TenKH"] = new SelectList(_context.Khachhang, "MaKH", "MaKH", hoadon.TenKH);
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP", hoadon.TenSP);
             return View(hoadon);
         }
 

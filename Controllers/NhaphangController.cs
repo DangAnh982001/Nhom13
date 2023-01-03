@@ -6,14 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Nhom13.Models;
-using Nhom13.Models.Process;
 
 namespace Nhom13.Controllers
 {
     public class NhaphangController : Controller
     {
         private readonly ApplicationDbcontext _context;
-        private StringProcess strPro = new StringProcess();
 
         public NhaphangController(ApplicationDbcontext context)
         {
@@ -51,18 +49,9 @@ namespace Nhom13.Controllers
         // GET: Nhaphang/Create
         public IActionResult Create()
         {
-            ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "TenNCC");
-            ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "TenNV");
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP");
-
-            var IDdautien = "IDNH01";
-            var countAnh = _context.Nhaphang.Count();
-            if (countAnh > 0)
-            {
-                var IDNH = _context.Nhaphang.OrderByDescending(m => m.IDNH).First().IDNH;
-                IDdautien = strPro.AutoGenerateCode(IDNH);
-            }
-            ViewBag.newID = IDdautien;
+            ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "MaNCC");
+            ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "MaNV");
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP");
             return View();
         }
 
@@ -79,9 +68,9 @@ namespace Nhom13.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "TenNCC", nhaphang.TenNCC);
-            ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "TenNV", nhaphang.TenNV);
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP", nhaphang.TenSP);
+            ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "MaNCC", nhaphang.TenNCC);
+            ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "MaNV", nhaphang.TenNV);
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP", nhaphang.TenSP);
             return View(nhaphang);
         }
 
@@ -98,9 +87,9 @@ namespace Nhom13.Controllers
             {
                 return NotFound();
             }
-            ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "TenNCC", nhaphang.TenNCC);
-            ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "TenNV", nhaphang.TenNV);
-            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "TenSP", nhaphang.TenSP);
+            ViewData["TenNCC"] = new SelectList(_context.Nhacungcap, "MaNCC", "MaNCC", nhaphang.TenNCC);
+            ViewData["TenNV"] = new SelectList(_context.Nhanvien, "MaNV", "MaNV", nhaphang.TenNV);
+            ViewData["TenSP"] = new SelectList(_context.Sanpham, "MaSP", "MaSP", nhaphang.TenSP);
             return View(nhaphang);
         }
 

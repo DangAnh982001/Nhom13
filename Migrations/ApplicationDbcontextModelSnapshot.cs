@@ -16,6 +16,25 @@ namespace Nhom13.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
 
+            modelBuilder.Entity("Nhom13.Models.Dangnhap", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("userName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Dangnhap");
+                });
+
             modelBuilder.Entity("Nhom13.Models.Hoadon", b =>
                 {
                     b.Property<string>("MaHD")
@@ -59,25 +78,6 @@ namespace Nhom13.Migrations
                     b.HasKey("MaKH");
 
                     b.ToTable("Khachhang");
-                });
-
-            modelBuilder.Entity("Nhom13.Models.Login", b =>
-                {
-                    b.Property<int>("userId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("userId");
-
-                    b.ToTable("Login");
                 });
 
             modelBuilder.Entity("Nhom13.Models.Nhacungcap", b =>

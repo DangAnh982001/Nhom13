@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Nhom13.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    [Migration("20230102163709_Login")]
-    partial class Login
+    [Migration("20230103042113_Nhaphang")]
+    partial class Nhaphang
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,25 +62,6 @@ namespace Nhom13.Migrations
                     b.HasKey("MaKH");
 
                     b.ToTable("Khachhang");
-                });
-
-            modelBuilder.Entity("Nhom13.Models.Login", b =>
-                {
-                    b.Property<int>("userId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("username")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("userId");
-
-                    b.ToTable("Login");
                 });
 
             modelBuilder.Entity("Nhom13.Models.Nhacungcap", b =>

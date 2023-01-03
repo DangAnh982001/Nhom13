@@ -5,23 +5,23 @@
 namespace Nhom13.Migrations
 {
     /// <inheritdoc />
-    public partial class Login : Migration
+    public partial class Dangnhap : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Login",
+                name: "Dangnhap",
                 columns: table => new
                 {
-                    userId = table.Column<int>(type: "INTEGER", nullable: false)
+                    UserID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    username = table.Column<string>(type: "TEXT", nullable: false),
-                    password = table.Column<string>(type: "TEXT", nullable: false)
+                    userName = table.Column<string>(type: "TEXT", nullable: false),
+                    Password = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Login", x => x.userId);
+                    table.PrimaryKey("PK_Dangnhap", x => x.UserID);
                 });
         }
 
@@ -29,7 +29,7 @@ namespace Nhom13.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Login");
+                name: "Dangnhap");
         }
     }
 }

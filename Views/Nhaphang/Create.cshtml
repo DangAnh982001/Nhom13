@@ -1,22 +1,25 @@
 @model Nhom13.Models.Nhaphang
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Edit</h1>
+<h1>Create</h1>
 
 <h4>Nhaphang</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IDNH" />
+            <div class="form-group">
+                <label asp-for="IDNH" class="control-label"></label>
+                <input asp-for="IDNH" class="form-control" />
+                <span asp-validation-for="IDNH" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="TenSP" class="control-label"></label>
-                <select asp-for="TenSP" class="form-control" asp-items="ViewBag.TenSP"></select>
-                <span asp-validation-for="TenSP" class="text-danger"></span>
+                <select asp-for="TenSP" class ="form-control" asp-items="ViewBag.TenSP"></select>
             </div>
             <div class="form-group">
                 <label asp-for="SoluongSP" class="control-label"></label>
@@ -25,13 +28,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="TenNCC" class="control-label"></label>
-                <select asp-for="TenNCC" class="form-control" asp-items="ViewBag.TenNCC"></select>
-                <span asp-validation-for="TenNCC" class="text-danger"></span>
+                <select asp-for="TenNCC" class ="form-control" asp-items="ViewBag.TenNCC"></select>
             </div>
             <div class="form-group">
                 <label asp-for="TenNV" class="control-label"></label>
-                <select asp-for="TenNV" class="form-control" asp-items="ViewBag.TenNV"></select>
-                <span asp-validation-for="TenNV" class="text-danger"></span>
+                <select asp-for="TenNV" class ="form-control" asp-items="ViewBag.TenNV"></select>
             </div>
             <div class="form-group">
                 <label asp-for="NgaynhapSP" class="control-label"></label>
@@ -39,7 +40,7 @@
                 <span asp-validation-for="NgaynhapSP" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

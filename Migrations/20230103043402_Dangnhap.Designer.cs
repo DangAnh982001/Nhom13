@@ -10,14 +10,78 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Nhom13.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    [Migration("20221128145817_Nhaphang")]
-    partial class Nhaphang
+    [Migration("20230103043402_Dangnhap")]
+    partial class Dangnhap
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
+
+            modelBuilder.Entity("Nhom13.Models.Dangnhap", b =>
+                {
+                    b.Property<int>("UserID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("userName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserID");
+
+                    b.ToTable("Dangnhap");
+                });
+
+            modelBuilder.Entity("Nhom13.Models.Hoadon", b =>
+                {
+                    b.Property<string>("MaHD")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Ngayban")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SoluongHD")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("TenKH")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TenSP")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaHD");
+
+                    b.HasIndex("TenKH");
+
+                    b.HasIndex("TenSP");
+
+                    b.ToTable("Hoadon");
+                });
+
+            modelBuilder.Entity("Nhom13.Models.Khachhang", b =>
+                {
+                    b.Property<string>("MaKH")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("DiachiKH")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("NgaysinhKH")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("TenKH")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MaKH");
+
+                    b.ToTable("Khachhang");
+                });
 
             modelBuilder.Entity("Nhom13.Models.Nhacungcap", b =>
                 {
@@ -111,6 +175,21 @@ namespace Nhom13.Migrations
                     b.HasKey("MaSP");
 
                     b.ToTable("Sanpham");
+                });
+
+            modelBuilder.Entity("Nhom13.Models.Hoadon", b =>
+                {
+                    b.HasOne("Nhom13.Models.Khachhang", "Khachhang")
+                        .WithMany()
+                        .HasForeignKey("TenKH");
+
+                    b.HasOne("Nhom13.Models.Sanpham", "Sanpham")
+                        .WithMany()
+                        .HasForeignKey("TenSP");
+
+                    b.Navigation("Khachhang");
+
+                    b.Navigation("Sanpham");
                 });
 
             modelBuilder.Entity("Nhom13.Models.Nhaphang", b =>

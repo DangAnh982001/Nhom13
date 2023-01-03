@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Nhom13.Migrations
 {
     [DbContext(typeof(ApplicationDbcontext))]
-    [Migration("20221202025905_Hoadon")]
+    [Migration("20230103041206_Hoadon")]
     partial class Hoadon
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
 
             modelBuilder.Entity("Nhom13.Models.Hoadon", b =>
                 {
@@ -50,7 +50,7 @@ namespace Nhom13.Migrations
                     b.Property<string>("MaKH")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DiachiNV")
+                    b.Property<string>("DiachiKH")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("NgaysinhKH")
